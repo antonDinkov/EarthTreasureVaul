@@ -1,7 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-//TODO add/change properties depending on exam description
-
 const userSchema = new Schema({
     email: {
         type: String,

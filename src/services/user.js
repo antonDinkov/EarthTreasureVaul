@@ -1,7 +1,6 @@
 const { User } = require('../models/User');
 const bcrypt = require('bcrypt');
 
-//TODO set identity prop name based on exam description
 const identityName = 'email';
 
 async function register(identity, password) {
