@@ -7,6 +7,6 @@ const homeRouter = Router();
 homeRouter.get('/', async (req, res) => {
     const stones = await getRecent();
     res.render('home', { stones });
-})
+});
 
-module.exports = { homeRouter }
+module.exports = { homeRouter };
