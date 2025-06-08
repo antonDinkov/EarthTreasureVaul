@@ -1,4 +1,4 @@
-function parserError(err) {
+function parseError(err) {
     if (err instanceof Error) {
         if (!err.errors) {
             //generic error
@@ -21,4 +21,4 @@ function parserError(err) {
     return err;
 };
 
-module.exports = { parserError };
+module.exports = { parseError };
