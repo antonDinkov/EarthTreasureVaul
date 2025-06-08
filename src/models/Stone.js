@@ -34,7 +34,7 @@ const stoneSchema = new Schema({
         ref: 'User',
         default: []
     },
-    owner: {
+    author: {
         type: Types.ObjectId,
         ref: 'User'
     }

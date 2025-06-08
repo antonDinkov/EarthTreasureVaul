@@ -1,7 +1,5 @@
 const { Stone } = require('../models/Stone');
 
-//TODO replace with real data service according to exam description
-
 async function getAll() {
     return Stone.find().lean();
 };
@@ -51,16 +49,36 @@ async function update(id, data, userId) {
     record.description = data.description;
 
     await record.save();
-
+    console.log(record);
+    
     return record;
 };
 
 //TODO add function to only upadate likes
+async function likeStone(stoneId, userId) {
+    const record = await Stone.findById(stoneId);
+
+    if (!record) {
+        throw new Error("Record not found " + stoneId);
+    };
+
+    if (record.author.toString() == userId) {
+        throw new Error("Access denied");
+    };
+
+    if (record.likes.find(like => like.toString() == userId)) {
+        return;
+    }
+
+    record.likes.push(userId);
+
+    await record.save();
+};
 
 async function deleteById(id, userId) {
     const record = await Stone.findById(id);
     if (!record) {
-        throw new Error("Record not found " + id);
+        throw new ReferenceError("Record not found " + id);
     };
 
     if (record.author.toString() != userId) {
@@ -76,5 +94,6 @@ module.exports = {
     getById,
     create,
     update,
+    likeStone,
     deleteById
 }

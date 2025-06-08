@@ -1,7 +1,6 @@
 const { Router } = require("express");
 const { getRecent, getAll, getById } = require("../services/stone");
 
-//TODO replace with real router according to exam description
 const homeRouter = Router();
 
 homeRouter.get('/', async (req, res) => {
